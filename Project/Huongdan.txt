@@ -1,0 +1,12 @@
+Red Cell = Start Cell
+	- Click for moving this Cell[ In case u want! ]
+Orange Cell = End Cell
+	- Click for moving this Cell [ In case u want!]
+Create Obstacle = Pink Cell
+	- Click to create obstacle
+Click the Red Cell in top-right corner to run the BFS Process
+
+Command Prompt:
+ +True if path to the destination point exits
+	else False
+ +Ten,MSSV,Lop
