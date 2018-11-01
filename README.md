@@ -1,5 +1,8 @@
 # MachineLearning
 Machine Learning project
+
+## Project 1: Algorithm stimulation
+
 ### Language: Python
  __BFS__ and __A* Search__ stimulation
  
