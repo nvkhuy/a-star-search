@@ -1,6 +1,9 @@
 import tkinter as tk
+from tkinter import *
 import time
 import queue
+import os
+import sys
 
 #Create Grid
 def create_grid(event=None):
@@ -27,9 +30,7 @@ def dragOrigin(eventorigin):
       y = eventorigin.y
       x = int(x/N)
       y = int(y/N)
-      if(x == RunCell[0] and y == RunCell[1]):
-      	return 0
-      elif(x == Start[0] and y == Start[1]):
+      if(x == Start[0] and y == Start[1]):
       	return 0
       elif(x == End[0] and y == End[1]):
       	return 0
@@ -42,16 +43,9 @@ def getorigin(eventorigin):
 	y = eventorigin.y
 	x = int(x/N)
 	y = int(y/N)
-
 	if(Start[0]!= -1):
 		if(End[0]!=-1):
-			if(x == RunCell[0] and y == RunCell[1]):
-				flag = BFS()
-				print(flag)
-				if(flag == True):
-					traceBack()
-					print(dist[End[0]][End[1]])
-			elif(x == Start[0] and y == Start[1]):
+			if(x == Start[0] and y == Start[1]):
 				CreateShape(Start[0],Start[1],0,"white")
 				Start[0] = -1
 				Start[1] = -1
@@ -67,9 +61,21 @@ def getorigin(eventorigin):
 		Start[0] = x
 		Start[1] = y
 		CreateShape(x,y,0,"Red")	
-
+#Restart
+def restart_program():
+    python = sys.executable
+    clear = lambda: os.system('cls')
+    clear()
+    os.execl(python, python, * sys.argv)
+def Run_BFS_search():
+	flag = BFS()
+	print(flag)
+	if(flag == True):
+		traceBack()
 #Init Grid
 def InitMatrix():
+	#Start log
+	print("BFS Searching processing:")
 	#Gobal varaiable
 	global Frame,N,root,Start,End,sizeX,sizeY,Block
 	root = tk.Tk()
@@ -77,6 +83,16 @@ def InitMatrix():
 	sizeY = 50
 	Block = [ [0 for i in range(sizeX+10)] for i in range(sizeY+10)]
 	N = 30
+	#Title
+	root.title("BFS stimulation created by Nguyen Vu Khanh Huy")
+	#Button
+	frame = Frame(root)
+	frame.pack()
+	Restart_button = Button(frame, text="Restart", command=restart_program,
+		bg = "yellow",activebackground="green2",activeforeground="black").pack(side = LEFT)
+	Run_Button = Button(frame, text="Searching", command=Run_BFS_search,
+		bg = "green2",activebackground="yellow",activeforeground="blue").pack(side = LEFT)
+	#Frame
 	Frame = tk.Canvas(root, height=1500, width=1500, bg='white')
 	Frame.pack(fill=tk.BOTH, expand=True)
 	Frame.bind('<Configure>', create_grid)
@@ -89,10 +105,7 @@ def InitMatrix():
 	#End Cell: color Orange
 	End = ([30,20])
 	CreateShape(End[0],End[1],0,"Orange")
-	#Run Cell: color Red
-	global RunCell
-	RunCell = ([20,0])
-	CreateShape(RunCell[0],RunCell[1],0,"Red")
+#printTrackback
 #printTrack
 def traceBack():
 	x = End[0]
@@ -140,7 +153,9 @@ def BFS():
 		for i in range(4):
 			X = Front[0]+dx[i]
 			Y = Front[1]+dy[i]
-			if(used[X][Y] == 0 and Block[X][Y] == 0):
+			if(used[X][Y] == 1):
+				continue
+			if(Block[X][Y] == 0):
 				if(X>=0 and X <= sizeX and Y>=0 and Y<=sizeY):
 					#print('Co',X,Y,used[X][Y])
 					#CreateShape(X,Y,"blue")
