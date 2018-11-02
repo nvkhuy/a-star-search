@@ -113,7 +113,7 @@ def traceBack():
 	b = path[x][y][1]
 	while(a!=-1 and b!=-1):
 		if(x != End[0] or y != End[1]):
-			CreateShape(x,y,0,"Purple")
+			CreateShape(x,y,0,"magenta")
 		x = a
 		y = b
 		a = path[x][y][0]
