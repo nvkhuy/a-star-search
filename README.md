@@ -32,7 +32,7 @@ Press __Searching__ to begin the process
 
 __Blue cell__ mean the cell that algorithm have to pass to reach the __end point__.
 
-__Violet cell__ mean the trace from the __end point__ back to the __start point__.
+__Magenta cell__ mean the trace from the __end point__ back to the __start point__.
 
 ![alt text](https://github.com/khanhhuynguyenvu/MachineLearning/blob/master/Project/Guide/Searching.PNG)
 
