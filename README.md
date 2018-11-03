@@ -1,5 +1,5 @@
-# Artifical_Intelligence
-Artifical_Intelligence project
+# Artifical Intelligence
+Artifical Intelligence project
 
 ## Project 1: Algorithm stimulation
 
