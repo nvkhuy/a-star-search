@@ -66,7 +66,7 @@ def restart_program():
     python = sys.executable
     clear = lambda: os.system('cls')
     clear()
-    os.execl(python, python, * sys.argv)
+    os.execl(sys.executable, 'python', __file__, *sys.argv[1:])
 def Run_Astart_search():
 	flag = a_star_search(Start,End)
 	print(flag)
@@ -169,5 +169,5 @@ def a_star_search(start,goal):
 #Main
 #root = Tk()
 InitMatrix()
-#loop
+# #loop
 root.mainloop()
