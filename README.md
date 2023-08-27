@@ -1,5 +1,4 @@
-# Artifical Intelligence
-Artifical Intelligence project
+# A Star Search
 
 ## Project 1: Algorithm stimulation
 
